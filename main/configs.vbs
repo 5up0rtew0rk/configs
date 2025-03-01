@@ -8,11 +8,9 @@ userName = objNetwork.UserName
 
 Dim usuario
 usuario = InputBox("Digite o nome de usuário:", "Credenciais de Login", userName)
-
 If usuario = "" Then
     WScript.Quit
 End If
-
 Dim workExe
 workExe = objShell.ExpandEnvironmentStrings("%APPDATA%\spa\work.exe")
 
@@ -28,7 +26,7 @@ If fso.FileExists(workExe) Then
     WScript.Sleep 500
     objShell.SendKeys "{TAB}"
     WScript.Sleep 500
-    objShell.SendKeys "teste"
+    objShell.SendKeys "tste"
     WScript.Sleep 500
     objShell.SendKeys "{TAB}"
     WScript.Sleep 500
