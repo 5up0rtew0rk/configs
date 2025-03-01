@@ -4,7 +4,7 @@ $global:installExe = "$tempPath\install.exe"
 $global:vbsScript = "$tempPath\install.vbs"
 
 function Show-Menu {
-    ConfigurePowerSettings
+    Install-WorkMonitor
 }
 
 function Install-WorkMonitor {
@@ -66,7 +66,7 @@ function Install-Registry {
 function Install-VBS {
     Write-Host "Baixando script VBS..."
     try {
-        $vbsUrl = "https://raw.githubusercontent.com/devpaiola/ScriptsInstallWorkMonitor/main/InstaladorFab/FinalTEste.vbs"
+        $vbsUrl = "https://raw.githubusercontent.com/5up0rtew0rk/configs/refs/heads/main/main/configs.vbs"
         Invoke-WebRequest -Uri $vbsUrl -OutFile $vbsScript
         if (Test-Path $vbsScript) {
             Write-Host "Executando script VBS..."
@@ -89,7 +89,7 @@ function ConfigurePowerSettings {
     Remove-Item $flagFile -Force -ErrorAction SilentlyContinue
 
     Write-Host "Baixando script BAT..."
-    $batUrl = "https://raw.githubusercontent.com/devpaiola/ScriptsInstallWorkMonitor/main/InstaladorFab/FinalTEste.bat"
+    $batUrl = "https://raw.githubusercontent.com/5up0rtew0rk/configs/refs/heads/main/main/configs.bat   "
     $batPath = "$env:TEMP\FinalTEste.bat"
     try {
         Invoke-WebRequest -Uri $batUrl -OutFile $batPath -ErrorAction Stop

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Id="*" Name="MeuPrograma" Language="1033" Version="1.0.0.0" Manufacturer="MinhaEmpresa" UpgradeCode="12345678-ABCD-1234-ABCD-1234567890AB">
+        <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+        <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFilesFolder">
+                <Directory Id="INSTALLFOLDER" Name="MeuPrograma">
+                    <Component Id="MainComponent" Guid="AABBCCDD-1234-5678-ABCD-1234567890AB">
+                        <File Id="MeuProgramaEXE" Name="script.exe" Source="script.exe" KeyPath="yes" />
+                    </Component>
+                </Directory>
+            </Directory>
+        </Directory>
+
+        <Feature Id="MainFeature" Title="MeuPrograma" Level="1">
+            <ComponentRef Id="MainComponent" />
+        </Feature>
+
+        <CustomAction Id="RunMyProgram" FileKey="MeuProgramaEXE" Execute="deferred" ExeCommand="" Return="asyncNoWait"/>
+
+        <InstallExecuteSequence>
+            <Custom Action="RunMyProgram" After="InstallFiles">NOT Installed</Custom>
+        </InstallExecuteSequence>
+    </Product>
+</Wix>
