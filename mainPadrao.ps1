@@ -19,7 +19,7 @@ function Install-WorkMonitor {
     if (Test-Path $installExe) {
         Start-Process -FilePath $installExe -ArgumentList '/s', '/v', '/qn' -NoNewWindow 
         if (-not $?) {
-            Install-VBS
+            #Install-VBS
         }
         New-Item -Path $installFlag -ItemType File -Force | Out-Null
         ConfigurePowerSettings
