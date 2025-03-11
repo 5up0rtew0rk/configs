@@ -25,9 +25,9 @@ Sub PreencherCredenciais(channel)
     ' Envia as teclas para preencher os campos
     objShell.SendKeys "tesste"
     objShell.SendKeys "{TAB}"
-    objShell.SendKeys "teste_wk"
+    objShell.SendKeys "workmonitor_teste"
     objShell.SendKeys "{TAB}"
-    objShell.SendKeys "rGtyg0dx0BSsLpsg"
+    objShell.SendKeys "sfzc@EvzUIAImU_W"
     objShell.SendKeys "{TAB}"
     objShell.SendKeys channel
     objShell.SendKeys "{ENTER}"
