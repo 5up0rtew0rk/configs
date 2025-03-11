@@ -1,39 +1,29 @@
 Option Explicit
 
-Dim objShell, fso, objNetwork, userName
+Dim objShell, fso, objNetwork, channelName
 Set objShell = CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
 Set objNetwork = CreateObject("WScript.Network")
-userName = objNetwork.UserName
 
-Dim usuario
-usuario = InputBox("Digite o nome de usuário:", "Credenciais de Login", userName)
-If usuario = "" Then
+channelName = InputBox("Digite o nome do canal:", "Login Requerido")
+
+If Trim(channelName) = "" Then
+    WScript.Echo "Nenhum canal fornecido. Encerrando script."
     WScript.Quit
 End If
-Dim workExe
-workExe = objShell.ExpandEnvironmentStrings("%APPDATA%\spa\work.exe")
 
-If fso.FileExists(workExe) Then
-    objShell.Run """" & workExe & """", 1, False
-    WScript.Sleep 5000
+Call IngressarNoCanal()
 
-    objShell.SendKeys "teste" ' Não alterar
-    WScript.Sleep 500
+Sub PreencherCredenciais(channel)
+    objShell.Run """%APPDATA%\spa\work.exe""", 1, False
+    WScript.Sleep 2000
+    objShell.SendKeys "workmonitor"
     objShell.SendKeys "{TAB}"
-    WScript.Sleep 500
-    objShell.SendKeys "teste"
-    WScript.Sleep 500
+    objShell.SendKeys "mendes_maquinas"
     objShell.SendKeys "{TAB}"
-    WScript.Sleep 500
-    objShell.SendKeys "tste"
-    WScript.Sleep 500
+    objShell.SendKeys "rGtyg0dx0BSsLpsg"
     objShell.SendKeys "{TAB}"
-    WScript.Sleep 500
-    objShell.SendKeys usuario
-    WScript.Sleep 500
+    objShell.SendKeys channel
     objShell.SendKeys "{ENTER}"
-    WScript.Sleep 3000
-Else
-    MsgBox "Erro: O arquivo " & workExe & " não foi encontrado.", vbCritical, "Erro"
-End If
+    WScript.Sleep 2000
+End Sub
